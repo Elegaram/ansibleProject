@@ -1,18 +1,18 @@
 ---
-- hosts: webservers
-  become: True
+- hosts: all
+  become: true
   tasks:
-    - name: Install packages
+    - name: Install apache packages
       apt:
-       name: apache2
-       state: present
-    - name: Start Apache server
+        name: apache2
+        state: present
+    - name: start apache server
       service:
-	name: apache2
+        name: apache2
         state: started
-	enabled: True
-    - name: Deploy static website
+        enabled: true
+    - name: deploy static website
       copy:
         src: index.html
-        dest: /var/www/html/
----
+        dest: /var/www/html
+...
